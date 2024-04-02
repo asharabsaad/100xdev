@@ -4,6 +4,16 @@ const app = express()
 
 const schema = zod.array(zod.number())
 
+/*
+    email: string => email
+    password: atleast 8 letters
+    country: "IN", "US"
+*/
+const schema1 = zod.object({
+    email: zod.string(),
+    password: zod.string(),
+    country: zod.literal("IN").or(zod.literal("US"))
+})
 
 app.use(express.json())
 

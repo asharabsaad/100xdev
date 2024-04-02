@@ -14,6 +14,7 @@ app.post('/health-checkup',(req,res)=>{
     res.send(`u have ${kidneyLength} kidneys`)
 })
 
+// globle catches
 app.use(function(err,req,res,next){
     res.json({
         msg: 'sorry something is up with our server'

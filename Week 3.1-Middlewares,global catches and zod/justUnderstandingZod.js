@@ -15,3 +15,17 @@ function validateInput(arr){
 }
 
 validateInput([1,23,4])
+
+const schema1 = zod.object({
+    email: zod.string().email(),
+    password: zod.string().min(8),
+    
+})
+
+
+/*
+    {
+        email => string => should look like email
+        password => should have 8 letters
+    }
+*/

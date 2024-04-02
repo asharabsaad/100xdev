@@ -7,6 +7,7 @@ class Animal{
     speak(){
         console.log(`hi there ${this.speaks}`)
     }
+    static 
 }
 
 let dog = new Animal("dog","four legs", "bark");

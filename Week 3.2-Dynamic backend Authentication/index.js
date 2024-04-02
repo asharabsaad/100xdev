@@ -22,14 +22,17 @@ const ALL_USERS =[
         name:'alio'
     }
 ]
+
 function userExists(username,password){
+    let doesExist = false
     for(let i = 0; i<ALL_USERS.length; i++){
-        if(ALL_USERS[i] == username && ALL_USERS[i] == password){
-            return true;
+        
+        if(ALL_USERS[i].username == username && ALL_USERS[i].password == password){
+            doesExist = true
         }
 
     }
-    return false
+    return doesExist
 }
 app.post('/signin',(req,res)=>{
     const username = req.body.username;
@@ -48,13 +51,20 @@ app.post('/signin',(req,res)=>{
 app.get('/users',(req,res)=>{
     const token = req.headers.authorization;
     try{
-        const decoded = jwt.verify(token,password)
+        const decoded = jwt.verify(token,jwtPassword)
         const username = decoded.username;
+        res.json({
+            msg: "user does exist"
+        })
     }catch{
-
+        res.json({
+            msg: "does not"
+        })
     }
 })
 
 
 
-app.listen(3000) 
+app.listen(3000, ()=>{
+    console.log('lsidjf')
+}) 

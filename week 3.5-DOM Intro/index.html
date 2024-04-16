@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num1">enter text</input>
+    <input type="number" id="num2">enter number</input>
+    <button>click me</button>
+    <p id="sum"></p>
+
+    <script>
+        const input1 = document.querySelector('#num1');
+        const input2 = document.querySelector('#num2');
+        const button = document.querySelector('button');
+        const sum = document.querySelector('#sum');
+
+        button.addEventListener('click', () => {
+            const num1 = parseInt(input1.value);
+            const num2 = parseInt(input2.value);
+            console.log(typeof(num1));
+            sum.textContent = parseInt(num1 + num2  )
+        });
+
+    </script>
+</body>
+</html>

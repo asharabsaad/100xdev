@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        body{
+            background-color: grey;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .todo{
+            text-align: center;
+        }
+    </style>
+</head> 
+<body>
+    <div class="todo">
+        <div>
+            <input type="text" placeholder="Title" id="title"></input><br><br>
+            <input type="text" placeholder="Description" id="description"></input><br><br>
+            <button onclick="addTodo()">Add</button> 
+            <div id="container">
+            
+            </div>
+        </div>
+         
+        
+
+        
+    </div>
+    <script>
+        let globalId = 1;
+        function addTodo() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const parent = document.getElementById("container")
+
+            parent.appendChild(creareChild(title,description, globalId++))
+            title.value = ""
+            description.value = ""
+        }
+
+
+        function creareChild(title,description,id){
+            const child = document.createElement("div");
+            const firstGrandChild =  document.createElement("div")
+            firstGrandChild.innerHTML = title;
+            const secondGrandChild = document.createElement("div")
+            secondGrandChild.innerHTML = description
+            const thirdGrandChild = document.createElement("button")
+            thirdGrandChild.innerHTML = "Mark As Done"
+            thirdGrandChild.setAttribute("onclick", `markAsDone(${id})`)
+            child.appendChild(firstGrandChild)
+            child.appendChild(secondGrandChild)
+            child.appendChild(thirdGrandChild)
+            child.setAttribute("id", id)
+            return child
+               
+        }
+
+        function markAsDone(todoId){
+            const parent = document.getElementById(todoId)
+            parent.children[2].innerHTML = "done!";
+        }
+    </script>
+</body>
+</html>
